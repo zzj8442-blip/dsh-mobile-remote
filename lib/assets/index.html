@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#0f1420">
+<title>DSH 手机遥控</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css?v=5">
+</head>
+<body>
+<div id="app">
+  <!-- 配对页 -->
+  <section id="view-login" class="view hidden">
+    <div class="login-card">
+      <div class="logo">📡</div>
+      <h1>DSH 手机遥控</h1>
+      <p class="sub">在电脑上打开 DSH 桌面端 → 左下角「手机远程」查看配对码</p>
+      <input id="pin-input" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="6"
+             placeholder="6 位配对码" autocomplete="one-time-code">
+      <button id="pair-btn" class="primary">连接</button>
+      <div id="login-error" class="error hidden"></div>
+      <p class="hint">同一 Wi-Fi 下，手机浏览器访问电脑显示的地址即可</p>
+    </div>
+  </section>
+
+  <!-- 会话列表 -->
+  <section id="view-list" class="view hidden">
+    <header class="topbar">
+      <h1>会话</h1>
+      <button id="new-session-btn" class="icon-btn" title="新建会话">＋</button>
+    </header>
+    <div id="list-pending" class="pending hidden">⏳ 等待审批…</div>
+    <ul id="session-list" class="session-list"></ul>
+    <div id="list-empty" class="empty hidden">还没有会话，点右上角 ＋ 新建</div>
+  </section>
+
+  <!-- 聊天页 -->
+  <section id="view-chat" class="view hidden">
+    <header class="topbar">
+      <button id="back-btn" class="icon-btn">‹</button>
+      <div class="chat-title-wrap">
+        <div id="chat-title" class="chat-title">会话</div>
+        <div id="chat-status" class="chat-status">—</div>
+      </div>
+      <button id="cancel-btn" class="danger-btn hidden" title="取消当前运行">■</button>
+    </header>
+    <div id="chat-pending" class="pending hidden"></div>
+    <div id="question-cards" class="cards"></div>
+    <div id="messages" class="messages"></div>
+    <footer class="composer">
+      <div class="mode-row">
+        <label class="mode-toggle"><input type="checkbox" id="steer-toggle"> 打断当前任务并发送</label>
+        <span id="queue-info" class="queue-info"></span>
+      </div>
+      <div class="input-row">
+        <textarea id="msg-input" rows="1" placeholder="发消息给 DSH…"></textarea>
+        <button id="send-btn" class="primary send">发送</button>
+      </div>
+    </footer>
+  </section>
+
+  <div id="toast" class="toast hidden"></div>
+</div>
+<script src="app.js?v=5"></script>
+</body>
+</html>

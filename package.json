@@ -1,0 +1,38 @@
+{
+  "name": "@dsh-external/dsh-mobile-remote",
+  "version": "0.1.0",
+  "description": "手机远程遥控 DSH：实时进度 / 审批 / 对话（PWA + PIN 配对认证）",
+  "private": true,
+  "type": "module",
+  "main": "./lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "license": "BSD-3-Clause",
+  "peerDependencies": {
+    "@deepseek-ai/schemastery": ">=0.0.1-rc <2",
+    "cordis": ">=4.0.0-rc <5"
+  },
+  "scripts": {
+    "build": "node -e \"console.log('dsh-mobile-remote: 手写产物模式（lib/ 直接维护），无需构建')\"",
+    "build:client": "node -e \"console.log('dsh-mobile-remote: client 手写 ModuleLoader bundle，无需 tsdown')\""
+  },
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./client": {
+      "default": "./lib/client.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-runtime",
+        "@deepseek-ai/dsh-client-ui-slots"
+      ],
+      "platform": "web"
+    }
+  }
+}
